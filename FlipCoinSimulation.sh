@@ -1,8 +1,8 @@
 echo "Welcome to Flip Coin Simulation"
-read -p "how many times you want to toss the coin: " num
 headcount=0
 tailcount=0
-for (( i=1; i<=$num; i++))
+maxwon=21
+while [ $headcount -lt $maxwon -a $tailcount -lt $maxwon ]
 do
 	random=$((RANDOM%2))
 	if [ $random -eq 1 ]
@@ -12,6 +12,13 @@ do
 		((tailcount++))
 	fi
 done
-
-echo "Head won $headcount times"
-echo "Tail won $tailcount times"
+if [ $headcount -eq $maxwon ]
+then
+	woncount=$((headcount-tailcount))
+	echo "Head won."
+	echo "Head won by $woncount points."
+else
+	wonCount=$((tailCount-headCount))
+	echo "Tail won."
+	echo "Tail won by $wonCount points."
+fi
